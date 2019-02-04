@@ -10,7 +10,6 @@ resource "aws_vpc" "main" {
     }
 }
 
-
 # Subnets
 resource "aws_subnet" "main-public" {
     vpc_id = "${aws_vpc.main.id}"
@@ -60,4 +59,75 @@ resource "aws_route_table" "main-public" {
 resource "aws_route_table_association" "main-public" {
     subnet_id = "${aws_subnet.main-public.id}"
     route_table_id = "${aws_route_table.main-public.id}"
+}
+
+resource "aws_security_group" "jmaster" {
+  name = "vpc_test_web"
+  description = "Allow incoming HTTP connections & SSH access"
+
+  ingress {
+    from_port = 8080
+    to_port = 8080
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 443
+    to_port = 443
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = -1
+    to_port = -1
+    protocol = "icmp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks =  ["0.0.0.0/0"]
+  }
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    cidr_blocks     = ["0.0.0.0/0"]
+  }
+
+  vpc_id="${aws_vpc.vpc.id}"
+
+  tags {
+    Name = "Jenkins"
+  }
+}
+
+# Defining security group for private subnet
+resource "aws_security_group" "jslave"{
+  name = "sg_test_web"
+  description = "Allow traffic from public subnet"
+
+  ingress {
+    from_port = -1
+    to_port = -1
+    protocol = "icmp"
+    cidr_blocks = ["${var.public_subnet_cidr}"]
+  }
+
+  ingress {
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = ["${var.public_subnet_cidr}"]
+  }
+
+  vpc_id = "${aws_vpc.vpc.id}"
+
+  tags {
+    Name = "Internal"
+  }
 }
