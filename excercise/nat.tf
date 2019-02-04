@@ -25,11 +25,3 @@ resource "aws_route_table_association" "main-private-1-a" {
     subnet_id = "${aws_subnet.main-private-1.id}"
     route_table_id = "${aws_route_table.main-private.id}"
 }
-resource "aws_route_table_association" "main-private-2-a" {
-    subnet_id = "${aws_subnet.main-private-2.id}"
-    route_table_id = "${aws_route_table.main-private.id}"
-}
-resource "aws_route_table_association" "main-private-3-a" {
-    subnet_id = "${aws_subnet.main-private-3.id}"
-    route_table_id = "${aws_route_table.main-private.id}"
-}
