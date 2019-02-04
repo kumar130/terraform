@@ -99,7 +99,7 @@ resource "aws_security_group" "jmaster" {
     cidr_blocks     = ["0.0.0.0/0"]
   }
 
-  vpc_id="${aws_vpc.main.id.id}"
+vpc_id = "${aws_vpc.main.id}"
 
   tags {
     Name = "Jenkins"
@@ -125,7 +125,7 @@ resource "aws_security_group" "jslave"{
     cidr_blocks = ["${var.public_subnet_cidr}"]
   }
 
-  vpc_id = "${aws_vpc.main.id.id}"
+  vpc_id = "${aws_vpc.main.id}"
 
   tags {
     Name = "Internal"

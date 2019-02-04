@@ -11,3 +11,7 @@ variable "INSTANCE_USERNAME" {
   default = "ubuntu"
 }
 
+variable "public_subnet_cidr" {
+  description = "CIDR for the public subnet"
+  default = "172.20.10.0/24"
+}

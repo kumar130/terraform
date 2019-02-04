@@ -5,4 +5,4 @@ sudo apt-get update
 sudo apt install openjdk-8-jre -y
 sudo apt-get install jenkins -y
 sudo service jenkins restart
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword >> test.txt
+#sudo cat /var/lib/jenkins/secrets/initialAdminPassword >> test.txt
