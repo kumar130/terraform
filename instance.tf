@@ -19,7 +19,8 @@ provisioner "file" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/script.sh",
-      "sudo /tmp/script.sh"
+      "sudo /tmp/script.sh",
+     # "sudo cat /var/lib/jenkins/secrets/initialAdminPassword >> test.txt"
     ]
   }
   connection {
