@@ -105,29 +105,3 @@ vpc_id = "${aws_vpc.main.id}"
     Name = "Jenkins"
   }
 }
-
-# Defining security group for private subnet
-resource "aws_security_group" "jslave"{
-  name = "sg_test_web"
-  description = "Allow traffic from public subnet"
-
-  ingress {
-    from_port = -1
-    to_port = -1
-    protocol = "icmp"
-    cidr_blocks = ["${var.public_subnet_cidr}"]
-  }
-
-  ingress {
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
-    cidr_blocks = ["${var.public_subnet_cidr}"]
-  }
-
-  vpc_id = "${aws_vpc.main.id}"
-
-  tags {
-    Name = "Internal"
-  }
-}
