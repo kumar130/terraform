@@ -31,7 +31,7 @@ provisioner "file" {
 }
 
 # Defining Application server inside the private subnet
-resource "aws_instance" "slave" {
+resource "aws_instance" "app" {
    ami  = "ami-7ea88d1b"
    instance_type = "t2.micro"
    key_name = "${aws_key_pair.new.key_name}"
@@ -40,6 +40,6 @@ resource "aws_instance" "slave" {
    source_dest_check = false
 
   tags {
-    Name = "slave"
+    Name = "app"
   }
 }
