@@ -124,7 +124,7 @@ resource "aws_security_group" "app"{
     cidr_blocks = ["${var.public_subnet_cidr}"]
   }
 
-  vpc_id = "${aws_vpc.vpc.id}"
+  vpc_id = "${aws_vpc.main.id}"
 
   tags {
     Name = "APP"
