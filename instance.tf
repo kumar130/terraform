@@ -28,6 +28,10 @@ provisioner "file" {
     user = "${var.INSTANCE_USERNAME}"
     private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"
   }
+  
+  tags {
+    Name = "Jenkins"
+  }
 }
 
 # Defining Application server inside the private subnet
