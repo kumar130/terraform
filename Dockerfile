@@ -1,5 +1,9 @@
-FROM java:openjdk-8-jdk-alpine
+FROM java:8
 
-ADD target/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar .
+WORKDIR /
 
-RUN java -jar spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar
+ADD target/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar
+
+EXPOSE 8888
+
+CMD java - jar spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar
