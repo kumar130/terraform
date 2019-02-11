@@ -28,17 +28,17 @@ stage('Docker Build') {
 
   stage('Docker Push') {
     steps {
-      sh "sudo docker login -u saurav812 -p Gold@123"
-     sh 'sudo docker push saurav812/image:latest'
+      sh "sudo docker login -u XXX -p XXX"
+     sh 'sudo docker push XXX/image:latest'
     }
   }
 
   stage('Deploy') {
       steps {
     node ('slave'){
-
+      sh "sudo docker login -u XXX -p XXX"
       sh 'docker pull saurav812/image:latest'
-      sh 'docker run -p 8888:8080'
+      sh 'sudo docker run -p 8666:8888 XXX/image'
     }
     }
   }
