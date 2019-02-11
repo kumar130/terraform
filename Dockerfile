@@ -6,4 +6,4 @@ ADD target/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar spring-petclinic-2.1.0.BUIL
 
 EXPOSE 8888
 
-CMD java -jar spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar
+CMD nohup java -jar spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar &
