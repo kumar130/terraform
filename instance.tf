@@ -4,7 +4,7 @@ resource "aws_key_pair" "new" {
 }
 
 resource "aws_instance" "master" {
-  ami = "ami-0f01fcbe971af8f5a"
+  ami = "ami-026c8acd92718196b"
   instance_type = "t2.micro"
   key_name = "${aws_key_pair.new.key_name}"
   subnet_id = "${aws_subnet.main-public.id}"
@@ -36,7 +36,7 @@ provisioner "file" {
 
 # Defining Application server inside the private subnet
 resource "aws_instance" "app" {
-   ami  = "ami-0f01fcbe971af8f5a"
+   ami  = "ami-026c8acd92718196b"
    instance_type = "t2.micro"
    key_name = "${aws_key_pair.new.key_name}"
    subnet_id = "${aws_subnet.main-private-1.id}"
