@@ -2,10 +2,10 @@ variable "AWS_REGION" {
   default = "us-east-1"
 }
 variable "PATH_TO_PRIVATE_KEY" {
-  default = "new"
+  default = "test"
 }
 variable "PATH_TO_PUBLIC_KEY" {
-  default = "new.pub"
+  default = "test.pub"
 }
 variable "INSTANCE_USERNAME" {
   default = "ubuntu"
